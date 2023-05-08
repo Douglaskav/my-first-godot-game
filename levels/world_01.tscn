@@ -331,7 +331,7 @@ centered = false
 
 [node name="03" type="ParallaxLayer" parent="Bg"]
 motion_scale = Vector2(0.4, 1)
-motion_mirroring = Vector2(432, 0)
+motion_mirroring = Vector2(432, 600)
 
 [node name="Clouds" type="Sprite2D" parent="Bg/03"]
 texture_repeat = 2

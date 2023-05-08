@@ -205,7 +205,6 @@ shape = SubResource("RectangleShape2D_b0koq")
 [node name="Camera" type="Camera2D" parent="."]
 position = Vector2(1, 0)
 limit_left = 10
-position_smoothing_enabled = true
 
 [node name="Anime" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -15)
