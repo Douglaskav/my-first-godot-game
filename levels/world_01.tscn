@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://n5jvymjjuf3d"]
+[gd_scene load_steps=24 format=3 uid="uid://n5jvymjjuf3d"]
 
 [ext_resource type="Texture2D" uid="uid://xhaeyo201sj5" path="res://assets/Seasonal Tilesets/1 - Grassland/Terrain (16 x 16).png" id="1_r1a7d"]
 [ext_resource type="Texture2D" uid="uid://wctisnkfhwtd" path="res://assets/Seasonal Tilesets/1 - Grassland/Grassland_entities (16 x 16).png" id="2_jmbh7"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dhl6a5b60ai50" path="res://assets/Seasonal Tilesets/1 - Grassland/Background parts/1 - Foreground_scenery.png" id="8_neofm"]
 [ext_resource type="PackedScene" uid="uid://b60mc8j1kusd1" path="res://prefabs/moving_platform.tscn" id="10_eyger"]
 [ext_resource type="PackedScene" uid="uid://bpc31krshugwv" path="res://prefabs/coin.tscn" id="11_r447c"]
+[ext_resource type="PackedScene" uid="uid://cu4stuimyn8iv" path="res://actors/Enemy.tscn" id="12_un3f3"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_t56dh"]
 tile_data = PackedInt32Array(0, 65537, 1)
@@ -414,3 +415,11 @@ position = Vector2(776, 280)
 
 [node name="Coin12" parent="Coins" instance=ExtResource("11_r447c")]
 position = Vector2(800, 280)
+
+[node name="Enemy" parent="." instance=ExtResource("12_un3f3")]
+position = Vector2(256, 192)
+collision_layer = 4
+
+[node name="Enemy2" parent="." instance=ExtResource("12_un3f3")]
+position = Vector2(304, 192)
+collision_layer = 4
