@@ -10,6 +10,7 @@ size = Vector2(32, 16)
 script = ExtResource("1_jme5d")
 
 [node name="Platform" type="AnimatableBody2D" parent="."]
+collision_layer = 2
 
 [node name="Sprite Platform" type="Sprite2D" parent="Platform"]
 texture = ExtResource("1_5dgwc")

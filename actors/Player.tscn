@@ -1,9 +1,10 @@
-[gd_scene load_steps=31 format=3 uid="uid://04cbg6gjehi2"]
+[gd_scene load_steps=33 format=3 uid="uid://04cbg6gjehi2"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_v476m"]
 [ext_resource type="Texture2D" uid="uid://dkkqbyf047km3" path="res://assets/Sprite Pack 2/2 - Mr. Mochi/Idle (32x32).png" id="2_uu6o0"]
 [ext_resource type="Texture2D" uid="uid://cfflk0ig23p4u" path="res://assets/Sprite Pack 2/2 - Mr. Mochi/Jump (32x32).png" id="3_vn773"]
 [ext_resource type="Texture2D" uid="uid://bygk1eo1g8ef8" path="res://assets/Sprite Pack 2/2 - Mr. Mochi/Run (32x32).png" id="4_gojav"]
+[ext_resource type="PackedScene" uid="uid://cmn2sb63sp21x" path="res://prefabs/hitbox.tscn" id="5_hv33f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b0koq"]
 size = Vector2(24, 28)
@@ -194,17 +195,17 @@ animations = [{
 "speed": 15.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w1amd"]
+size = Vector2(25.5, 28.5)
+
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 22
 script = ExtResource("1_v476m")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2(0, -14)
 shape = SubResource("RectangleShape2D_b0koq")
-
-[node name="Camera" type="Camera2D" parent="."]
-position = Vector2(1, 0)
-limit_left = 10
 
 [node name="Anime" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -15)
@@ -215,3 +216,17 @@ frame_progress = 0.529786
 
 [node name="Animator" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Anime")
+
+[node name="Hitbox" parent="." instance=ExtResource("5_hv33f")]
+visible = false
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -14.75)
+shape = SubResource("RectangleShape2D_w1amd")
+debug_color = Color(0.929412, 0.235294, 0.32549, 0.419608)
+
+[node name="Remote" type="RemoteTransform2D" parent="."]
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

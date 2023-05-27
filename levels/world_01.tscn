@@ -1,5 +1,6 @@
-[gd_scene load_steps=24 format=3 uid="uid://n5jvymjjuf3d"]
+[gd_scene load_steps=25 format=3 uid="uid://n5jvymjjuf3d"]
 
+[ext_resource type="Script" path="res://scripts/world_01.gd" id="1_k7ers"]
 [ext_resource type="Texture2D" uid="uid://xhaeyo201sj5" path="res://assets/Seasonal Tilesets/1 - Grassland/Terrain (16 x 16).png" id="1_r1a7d"]
 [ext_resource type="Texture2D" uid="uid://wctisnkfhwtd" path="res://assets/Seasonal Tilesets/1 - Grassland/Grassland_entities (16 x 16).png" id="2_jmbh7"]
 [ext_resource type="PackedScene" uid="uid://04cbg6gjehi2" path="res://actors/Player.tscn" id="3_50s62"]
@@ -289,6 +290,7 @@ shader = ExtResource("6_76aji")
 shader_parameter/move_speed = 0.05
 
 [node name="World_01" type="Node2D"]
+script = ExtResource("1_k7ers")
 
 [node name="Level" type="TileMap" parent="."]
 position = Vector2(-6, 0)
@@ -306,7 +308,6 @@ layer_1/tile_data = PackedInt32Array(983042, 327681, 1, 1048578, 327681, 2, 1114
 
 [node name="Player" parent="." instance=ExtResource("3_50s62")]
 position = Vector2(76, 223)
-collision_mask = 3
 
 [node name="Bg" type="ParallaxBackground" parent="."]
 
@@ -417,9 +418,13 @@ position = Vector2(776, 280)
 position = Vector2(800, 280)
 
 [node name="Enemy" parent="." instance=ExtResource("12_un3f3")]
-position = Vector2(256, 192)
+position = Vector2(288, 192)
 collision_layer = 4
 
 [node name="Enemy2" parent="." instance=ExtResource("12_un3f3")]
 position = Vector2(304, 192)
 collision_layer = 4
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(77, 223)
+limit_left = 10
