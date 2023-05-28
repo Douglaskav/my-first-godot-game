@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cmn2sb63sp21x" path="res://prefabs/hitbox.tscn" id="5_hv33f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b0koq"]
-size = Vector2(24, 28)
+size = Vector2(20, 28)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kf3yq"]
 atlas = ExtResource("2_uu6o0")
@@ -196,29 +196,27 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w1amd"]
-size = Vector2(25.5, 28.5)
+size = Vector2(22, 28.5)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 22
 script = ExtResource("1_v476m")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -14)
 shape = SubResource("RectangleShape2D_b0koq")
 
 [node name="Anime" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -15)
 sprite_frames = SubResource("SpriteFrames_el072")
-animation = &"idle"
+animation = &"running"
 autoplay = "idle"
-frame_progress = 0.529786
+frame_progress = 0.369394
 
 [node name="Animator" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Anime")
 
 [node name="Hitbox" parent="." instance=ExtResource("5_hv33f")]
-visible = false
 collision_layer = 0
 collision_mask = 4
 
@@ -228,5 +226,15 @@ shape = SubResource("RectangleShape2D_w1amd")
 debug_color = Color(0.929412, 0.235294, 0.32549, 0.419608)
 
 [node name="Remote" type="RemoteTransform2D" parent="."]
+
+[node name="Ray_right" type="RayCast2D" parent="."]
+position = Vector2(11, -10)
+target_position = Vector2(5, 0)
+collision_mask = 4
+
+[node name="Ray_left" type="RayCast2D" parent="."]
+position = Vector2(-11, -10)
+target_position = Vector2(-5, 0)
+collision_mask = 4
 
 [connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
